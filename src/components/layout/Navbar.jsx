@@ -1,6 +1,7 @@
 import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -18,9 +19,12 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <ThemeToggle />
 
-          <Button>
-            Login
+          <Button asChild>
+            <Link to="/login">
+              Login
+            </Link>
           </Button>
+
         </div>
       </div>
     </header>
