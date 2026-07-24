@@ -8,7 +8,7 @@ import {
 const cards = [
   {
     title: "Assigned Bus",
-    value: "KA01AB1234",
+    value: "KA-01-AB-1234",
     icon: BusFront,
     color: "bg-blue-100 text-blue-600",
   },
@@ -34,21 +34,21 @@ const cards = [
 
 export default function StudentStats() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mt-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mt-8">
       {cards.map((card) => {
         const Icon = card.icon;
 
         return (
           <div
             key={card.title}
-            className="bg-white rounded-2xl shadow-sm p-6 flex justify-between items-center hover:shadow-lg transition"
+            className="bg-white rounded-2xl shadow-sm p-6 flex items-center justify-between hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
           >
             <div>
-              <p className="text-gray-500 text-sm">
+              <p className="text-sm text-gray-500">
                 {card.title}
               </p>
 
-              <h2 className="text-2xl font-bold mt-2">
+              <h2 className="mt-2 text-2xl font-bold text-gray-900">
                 {card.value}
               </h2>
             </div>

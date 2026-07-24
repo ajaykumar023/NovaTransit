@@ -13,7 +13,7 @@ import RoutePage from "./pages/Driver/Route";
 import Students from "./pages/Driver/Students";
 import StartTrip from "./pages/Driver/StartTrip";
 import EndTrip from "./pages/Driver/EndTrip";
-import Profile from "./pages/Driver/Profile";
+import DriverProfile from "./pages/Driver/Profile";
 
 // Admin
 import AdminDashboard from "./pages/Admin/Dashboard";
@@ -49,7 +49,7 @@ function App() {
         <Route path="/driver/students" element={<Students />} />
         <Route path="/driver/start-trip" element={<StartTrip />} />
         <Route path="/driver/end-trip" element={<EndTrip />} />
-        <Route path="/driver/profile" element={<Profile />} />
+        <Route path="/driver/profile" element={<DriverProfile />} />
 
         {/* Admin */}
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
