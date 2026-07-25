@@ -3,41 +3,44 @@ import AdminTopbar from "@/components/admin/AdminTopbar";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-const navigate = useNavigate();
+export default function Analytics() {
+  const navigate = useNavigate();
 
-return (
-  <div className="flex min-h-screen bg-slate-100">
-    <AdminSidebar />
+  return (
+    <div className="flex min-h-screen bg-slate-100">
+      <AdminSidebar />
 
-    <main className="flex-1 p-8 overflow-y-auto">
-      <AdminTopbar />
+      <main className="flex-1 p-8 overflow-y-auto">
+        <AdminTopbar />
 
-      <div className="flex justify-between items-center mt-8">
-        <div>
-          <h1 className="text-4xl font-bold">Analytics</h1>
-          <p className="text-gray-500 mt-2">
-            View transportation analytics
-          </p>
+        <div className="flex justify-between items-center mt-8">
+          <div>
+            <h1 className="text-4xl font-bold">Analytics</h1>
+
+            <p className="text-gray-500 mt-2">
+              View transportation analytics
+            </p>
+          </div>
+
+          <button
+            onClick={() => navigate("/admin/dashboard")}
+            className="bg-blue-600 text-white px-5 py-3 rounded-xl flex items-center gap-2 hover:bg-blue-700"
+          >
+            <ArrowLeft size={18} />
+            Dashboard
+          </button>
         </div>
 
-        <button
-          onClick={() => navigate("/admin/dashboard")}
-          className="bg-blue-600 text-white px-5 py-3 rounded-xl flex items-center gap-2 hover:bg-blue-700"
-        >
-          <ArrowLeft size={18} />
-          Dashboard
-        </button>
-      </div>
+        <div className="mt-8 bg-white rounded-2xl shadow-sm p-10">
+          <h2 className="text-2xl font-bold mb-4">
+            Analytics
+          </h2>
 
-      <div className="mt-8 bg-white rounded-2xl shadow-sm p-10">
-        <h2 className="text-2xl font-bold mb-4">
-          Analytics
-        </h2>
-
-        <p className="text-gray-600">
-          This section allows the administrator to manage analytics data.
-        </p>
-      </div>
-    </main>
-  </div>
-);
+          <p className="text-gray-600">
+            This section allows the administrator to view transportation analytics.
+          </p>
+        </div>
+      </main>
+    </div>
+  );
+}

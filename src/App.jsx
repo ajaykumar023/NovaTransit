@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
 
 // Landing
 import Home from "./pages/Landing/Home";
@@ -34,6 +35,10 @@ import StudentProfile from "./pages/Student/Profile";
 function App() {
   return (
     <BrowserRouter>
+
+      {/* Automatically scroll to top on every page change */}
+      <ScrollToTop />
+
       <Routes>
 
         {/* Landing */}
