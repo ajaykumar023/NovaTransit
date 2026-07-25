@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Bus, Users, MapPinned, ShieldCheck } from "lucide-react";
+import CountUp from "react-countup";
 
 const stats = [
   {

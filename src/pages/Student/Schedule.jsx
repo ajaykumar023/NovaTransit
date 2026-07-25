@@ -1,3 +1,87 @@
+import { CalendarDays, Clock, ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
+import StudentSidebar from "@/components/student/StudentSidebar";
+import StudentTopbar from "@/components/student/StudentTopbar";
+
+const schedule = [
+  {
+    stop: "🏠 Home Pickup",
+    time: "7:45 AM",
+    status: "Completed",
+  },
+  {
+    stop: "📍 MG Road",
+    time: "7:55 AM",
+    status: "Current Stop",
+  },
+  {
+    stop: "🎓 BGS College",
+    time: "8:10 AM",
+    status: "Upcoming",
+  },
+  {
+    stop: "🚌 Return Bus",
+    time: "4:30 PM",
+    status: "Upcoming",
+  },
+];
+
 export default function Schedule() {
-  return <h1 className="p-8 text-2xl font-bold">Schedule</h1>;
+  const navigate = useNavigate();
+
+  return (
+    <div className="flex min-h-screen bg-slate-100">
+      <StudentSidebar />
+
+      <main className="flex-1 p-8 overflow-y-auto">
+        <StudentTopbar />
+
+        <div className="flex justify-between items-center mt-8">
+          <div>
+            <h1 className="text-4xl font-bold">Today's Schedule</h1>
+            <p className="text-gray-500 mt-2">
+              Bus timings for today.
+            </p>
+          </div>
+
+          <button
+            onClick={() => navigate("/student/dashboard")}
+            className="flex items-center gap-2 bg-blue-600 text-white px-5 py-3 rounded-xl hover:bg-blue-700 transition"
+          >
+            <ArrowLeft size={18} />
+            Dashboard
+          </button>
+        </div>
+
+        <div className="mt-8 bg-white rounded-2xl shadow-sm p-6">
+          {schedule.map((item) => (
+            <div
+              key={item.stop}
+              className="flex justify-between items-center py-5 border-b last:border-0"
+            >
+              <div className="flex items-center gap-4">
+                <CalendarDays className="text-blue-600" />
+
+                <div>
+                  <h2 className="font-bold text-lg">
+                    {item.stop}
+                  </h2>
+
+                  <p className="text-gray-500">
+                    {item.status}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 font-bold text-blue-600">
+                <Clock size={18} />
+                {item.time}
+              </div>
+            </div>
+          ))}
+        </div>
+      </main>
+    </div>
+  );
 }

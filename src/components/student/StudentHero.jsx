@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
   BusFront,
   Clock3,
@@ -7,14 +8,13 @@ import {
 } from "lucide-react";
 
 export default function StudentHero() {
+  const navigate = useNavigate();
+
   return (
     <div className="mt-8 rounded-3xl bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-500 text-white shadow-xl p-8">
-
       <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
-
         {/* Left */}
         <div className="flex-1">
-
           <p className="text-blue-100 text-lg">
             👋 Good Morning, Krithika
           </p>
@@ -35,17 +35,17 @@ export default function StudentHero() {
             </span>
           </div>
 
-          <button className="mt-8 bg-white text-blue-700 font-bold px-6 py-3 rounded-xl flex items-center gap-2 hover:scale-105 transition">
+          <button
+            onClick={() => navigate("/student/track")}
+            className="mt-8 bg-white text-blue-700 font-bold px-6 py-3 rounded-xl flex items-center gap-2 hover:scale-105 transition"
+          >
             Track Live Bus
             <ArrowRight size={18} />
           </button>
-
         </div>
 
         {/* Right */}
-
         <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 w-full lg:w-96">
-
           <div className="flex items-center gap-3 mb-5">
             <BusFront />
             <span className="font-semibold">
@@ -84,11 +84,8 @@ export default function StudentHero() {
               On Time
             </span>
           </div>
-
         </div>
-
       </div>
-
     </div>
   );
-}   
+}

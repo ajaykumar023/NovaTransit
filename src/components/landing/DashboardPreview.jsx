@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 import {
@@ -35,6 +36,7 @@ const tabs = [
 export default function DashboardPreview() {
 
   const [activeTab, setActiveTab] = useState("student");
+  const navigate = useNavigate();
 
   return (
 
@@ -268,7 +270,18 @@ export default function DashboardPreview() {
                     </p>
                   </div>
 
-                  <button className="flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white shadow-lg transition hover:scale-105">
+                  <button
+                    onClick={() => {
+                      if (activeTab === "student") {
+                        navigate("/student/dashboard");
+                      } else if (activeTab === "driver") {
+                        navigate("/driver/dashboard");
+                      } else {
+                        navigate("/admin/dashboard");
+                      }
+                    }}
+                    className="flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white shadow-lg transition hover:scale-105"
+                  >
                     Open Dashboard
                     <ArrowRight className="h-4 w-4" />
                   </button>

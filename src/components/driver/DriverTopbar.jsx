@@ -51,7 +51,7 @@ export default function DriverTopbar() {
 
           <div className="hidden md:block">
             <h3 className="font-semibold text-slate-900 dark:text-white">
-              John Driver
+              Rahul Kumar
             </h3>
 
             <p className="text-sm text-slate-500">

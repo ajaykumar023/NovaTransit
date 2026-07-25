@@ -1,5 +1,5 @@
-import DashboardPreview from "@/components/landing/DashboardPreview";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 import {
   ArrowRight,
   Play,
@@ -70,8 +70,9 @@ const fadeUp = {
 };
 
 export default function Hero() {
+  const navigate = useNavigate();
   return (
-    <section className="relative overflow-hidden">
+    <section id="hero" className="relative overflow-hidden">
 
       {/* ================= BACKGROUND ================= */}
 
@@ -145,16 +146,21 @@ export default function Hero() {
             >
               <Button
                 size="lg"
+                onClick={() => navigate("/register")}
                 className="rounded-xl px-8 py-6 text-base shadow-xl"
               >
                 Get Started
-
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
 
               <Button
                 variant="outline"
                 size="lg"
+                onClick={() =>
+                  document
+                    .getElementById("dashboard-preview")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
                 className="rounded-xl px-8 py-6 text-base"
               >
                 <Play className="mr-2 h-5 w-5" />
