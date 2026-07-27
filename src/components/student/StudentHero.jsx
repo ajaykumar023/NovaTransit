@@ -4,6 +4,7 @@ import {
   Clock3,
   MapPinned,
   User,
+  Users,
   ArrowRight,
 } from "lucide-react";
 
@@ -51,7 +52,6 @@ export default function StudentHero() {
         </div>
 
         {/* Right */}
-
         <div className="w-full lg:w-96 bg-white/10 backdrop-blur-md rounded-2xl p-5 sm:p-6">
 
           <div className="flex items-center gap-3 mb-5">
@@ -83,7 +83,7 @@ export default function StudentHero() {
             </span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 mb-5">
 
             <span className="h-3 w-3 rounded-full bg-green-400 animate-pulse"></span>
 
@@ -91,6 +91,19 @@ export default function StudentHero() {
 
             <span className="ml-auto font-bold text-green-300">
               On Time
+            </span>
+
+          </div>
+
+          {/* Students Onboard */}
+          <div className="flex items-center gap-3">
+
+            <Users />
+
+            <span>Students</span>
+
+            <span className="ml-auto font-bold text-sm sm:text-base">
+              32 / 45
             </span>
 
           </div>

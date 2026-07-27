@@ -3,6 +3,7 @@ import {
   Clock3,
   MapPin,
   CircleCheckBig,
+  Users,
 } from "lucide-react";
 
 const cards = [
@@ -25,6 +26,12 @@ const cards = [
     color: "bg-orange-100 text-orange-600",
   },
   {
+    title: "Students",
+    value: "32 / 45",
+    icon: Users,
+    color: "bg-purple-100 text-purple-600",
+  },
+  {
     title: "Status",
     value: "On Time",
     icon: CircleCheckBig,
@@ -34,7 +41,7 @@ const cards = [
 
 export default function StudentStats() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 mt-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-4 sm:gap-6 mt-8">
 
       {cards.map((card) => {
         const Icon = card.icon;
