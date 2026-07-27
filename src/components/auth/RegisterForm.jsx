@@ -1,6 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { registerUser } from "@/services/authService";
 import { motion } from "framer-motion";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { auth, db } from "../../firebase/firebase";
 import {
   User,
   Mail,
@@ -12,6 +16,7 @@ import {
 } from "lucide-react";
 
 export default function RegisterForm() {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -22,9 +27,9 @@ export default function RegisterForm() {
     email: "",
     password: "",
     confirmPassword: "",
+    role: "student",
     agree: false,
   });
-
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
@@ -37,16 +42,30 @@ export default function RegisterForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+
     setLoading(true);
 
-    console.log("Register Data:", formData);
+    try {
+      await registerUser(
+        formData.email,
+        formData.password,
+        formData.fullName,
+        formData.role
+      );
 
-    setTimeout(() => {
-      setLoading(false);
-      alert("Firebase Registration coming soon 🚀");
-    }, 1200);
+      alert("Account created successfully!");
+
+      navigate("/login");
+    } catch (error) {
+      alert(error.message);
+    }
+
+    setLoading(false);
   };
-
   return (
     <motion.form
       onSubmit={handleSubmit}
@@ -103,6 +122,24 @@ export default function RegisterForm() {
             required
           />
         </div>
+      </div>
+      {/* Register As */}
+
+      <div>
+        <label className="mb-2 block font-semibold">
+          Register As
+        </label>
+
+        <select
+          name="role"
+          value={formData.role}
+          onChange={handleChange}
+          className="w-full rounded-2xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 py-4 px-4 outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-100 dark:focus:ring-blue-900/30"
+        >
+          <option value="student">🎓 Student</option>
+          <option value="driver">🚌 Driver</option>
+          <option value="admin">👨‍💼 Admin</option>
+        </select>
       </div>
             {/* Password */}
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { loginUser, getUserRole } from "@/services/authService";
 
 import {
   Mail,
@@ -31,22 +32,41 @@ export default function LoginForm() {
     }));
   };
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     setLoading(true);
 
-    // Firebase login will be added later
+    try {
+      const userCredential = await loginUser(
+        formData.email,
+        formData.password
+      );
 
-    console.log("Login Data:", formData);
+      const userData = await getUserRole(userCredential.user.uid);
 
-    setTimeout(() => {
+      // Save logged-in user for other pages
+      localStorage.setItem("user", JSON.stringify(userData));
+
+      console.log("Logged in user:", userData);
+
+      if (userData.role === "student") {
+        navigate("/student/dashboard");
+      } else if (userData.role === "driver") {
+        navigate("/driver/dashboard");
+      } else if (userData.role === "admin") {
+        navigate("/admin/dashboard");
+      } else {
+        alert("Invalid user role");
+      }
+    } catch (error) {
+      alert(error.message);
+    } finally {
       setLoading(false);
-
-      alert("Firebase Authentication coming soon 🚀");
-    }, 1200);
+    }
   };
-
   return (
     <motion.form
       onSubmit={handleSubmit}

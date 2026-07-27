@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   BusFront,
@@ -10,6 +11,15 @@ import {
 
 export default function StudentHero() {
   const navigate = useNavigate();
+  const [studentName, setStudentName] = useState("Student");
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (user?.name) {
+      setStudentName(user.name);
+    }
+  }, []);
 
   return (
     <div className="mt-6 rounded-3xl bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-500 text-white shadow-xl p-5 sm:p-6 lg:p-8">
@@ -20,7 +30,7 @@ export default function StudentHero() {
         <div className="flex-1 w-full">
 
           <p className="text-blue-100 text-base sm:text-lg">
-            👋 Good Morning, Krithika
+            👋 Good Morning, {studentName}
           </p>
 
           <h1 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">

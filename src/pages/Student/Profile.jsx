@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Mail,
   Phone,
@@ -17,6 +17,15 @@ export default function Profile() {
   const navigate = useNavigate();
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [student, setStudent] = useState(null);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (user) {
+      setStudent(user);
+    }
+  }, []);
 
   return (
     <div className="flex min-h-screen bg-slate-100">
@@ -68,11 +77,11 @@ export default function Profile() {
 
             <div className="text-center sm:text-left">
               <h1 className="text-3xl font-bold">
-                Krithika
+                {student?.name || "Student"}
               </h1>
 
               <p className="text-gray-500">
-                Artificial Intelligence and Machine Learning
+                {student?.major || "Artificial Intelligence and Machine Learning"}
               </p>
             </div>
 
@@ -84,17 +93,17 @@ export default function Profile() {
 
               <div className="flex items-center gap-3">
                 <Mail className="text-blue-600" />
-                <span>krithika@bgs.edu</span>
+                <span>{student?.email || "krithika@bgs.edu"}</span>
               </div>
 
               <div className="flex items-center gap-3">
                 <GraduationCap className="text-blue-600" />
-                <span>3rd Semester</span>
+                <span>{student?.semester || "3rd Semester"}</span>
               </div>
 
               <div className="flex items-center gap-3">
                 <MapPin className="text-blue-600" />
-                <span>MG Road Pickup Point</span>
+                <span>{student?.pickupPoint || "MG Road Pickup Point"}</span>
               </div>
 
             </div>
@@ -103,12 +112,12 @@ export default function Profile() {
 
               <div className="flex items-center gap-3">
                 <Phone className="text-blue-600" />
-                <span>+91 9876543210</span>
+                <span>{student?.phone || "+91 9876543210"}</span>
               </div>
 
               <div className="flex items-center gap-3">
                 <BusFront className="text-blue-600" />
-                <span>KA-01-AB-1234</span>
+                <span>{student?.busNumber || "KA-01-AB-1234"}</span>
               </div>
 
             </div>

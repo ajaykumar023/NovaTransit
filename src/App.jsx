@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 // Landing
 import Home from "./pages/Landing/Home";
@@ -35,12 +36,9 @@ import StudentProfile from "./pages/Student/Profile";
 function App() {
   return (
     <BrowserRouter>
-
-      {/* Automatically scroll to top on every page change */}
       <ScrollToTop />
 
       <Routes>
-
         {/* Landing */}
         <Route path="/" element={<Home />} />
 
@@ -48,30 +46,173 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        {/* Driver */}
-        <Route path="/driver/dashboard" element={<Dashboard />} />
-        <Route path="/driver/route" element={<RoutePage />} />
-        <Route path="/driver/students" element={<Students />} />
-        <Route path="/driver/start-trip" element={<StartTrip />} />
-        <Route path="/driver/end-trip" element={<EndTrip />} />
-        <Route path="/driver/profile" element={<DriverProfile />} />
+        {/* ================= DRIVER ================= */}
 
-        {/* Admin */}
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
-        <Route path="/admin/buses" element={<ManageBuses />} />
-        <Route path="/admin/drivers" element={<ManageDrivers />} />
-        <Route path="/admin/students" element={<ManageStudents />} />
-        <Route path="/admin/routes" element={<AdminRoutes />} />
-        <Route path="/admin/analytics" element={<Analytics />} />
-        <Route path="/admin/settings" element={<Settings />} />
+        <Route
+          path="/driver/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
 
-        {/* Student */}
-        <Route path="/student/dashboard" element={<StudentDashboard />} />
-        <Route path="/student/track" element={<TrackBus />} />
-        <Route path="/student/schedule" element={<StudentSchedule />} />
-        <Route path="/student/notifications" element={<StudentNotifications />} />
-        <Route path="/student/profile" element={<StudentProfile />} />
+        <Route
+          path="/driver/route"
+          element={
+            <ProtectedRoute>
+              <RoutePage />
+            </ProtectedRoute>
+          }
+        />
 
+        <Route
+          path="/driver/students"
+          element={
+            <ProtectedRoute>
+              <Students />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/driver/start-trip"
+          element={
+            <ProtectedRoute>
+              <StartTrip />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/driver/end-trip"
+          element={
+            <ProtectedRoute>
+              <EndTrip />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/driver/profile"
+          element={
+            <ProtectedRoute>
+              <DriverProfile />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* ================= ADMIN ================= */}
+
+        <Route
+          path="/admin/dashboard"
+          element={
+            <ProtectedRoute>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/buses"
+          element={
+            <ProtectedRoute>
+              <ManageBuses />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/drivers"
+          element={
+            <ProtectedRoute>
+              <ManageDrivers />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/students"
+          element={
+            <ProtectedRoute>
+              <ManageStudents />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/routes"
+          element={
+            <ProtectedRoute>
+              <AdminRoutes />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/analytics"
+          element={
+            <ProtectedRoute>
+              <Analytics />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/settings"
+          element={
+            <ProtectedRoute>
+              <Settings />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* ================= STUDENT ================= */}
+
+        <Route
+          path="/student/dashboard"
+          element={
+            <ProtectedRoute>
+              <StudentDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/student/track"
+          element={
+            <ProtectedRoute>
+              <TrackBus />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/student/schedule"
+          element={
+            <ProtectedRoute>
+              <StudentSchedule />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/student/notifications"
+          element={
+            <ProtectedRoute>
+              <StudentNotifications />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/student/profile"
+          element={
+            <ProtectedRoute>
+              <StudentProfile />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
