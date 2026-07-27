@@ -14,7 +14,7 @@ export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen bg-slate-100 dark:bg-slate-950">
+    <div className="flex h-screen sticky top-0 bg-slate-100 dark:bg-slate-950">
 
       {/* Sidebar */}
       <DriverSidebar

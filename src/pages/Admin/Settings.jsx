@@ -1,3 +1,4 @@
+import { useState } from "react";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import AdminTopbar from "@/components/admin/AdminTopbar";
 import { ArrowLeft } from "lucide-react";
@@ -6,16 +7,28 @@ import { useNavigate } from "react-router-dom";
 export default function Settings() {
   const navigate = useNavigate();
 
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <div className="flex min-h-screen bg-slate-100">
-      <AdminSidebar />
 
-      <main className="flex-1 p-8 overflow-y-auto">
-        <AdminTopbar />
+      <AdminSidebar
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+      />
 
-        <div className="flex justify-between items-center mt-8">
+      <main className="flex-1 lg:ml-72 p-4 sm:p-6 lg:p-8 overflow-y-auto">
+
+        <AdminTopbar
+          setSidebarOpen={setSidebarOpen}
+        />
+
+        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6 mt-8">
+
           <div>
-            <h1 className="text-4xl font-bold">Settings</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold">
+              Settings
+            </h1>
 
             <p className="text-gray-500 mt-2">
               Configure the NovaTransit system
@@ -24,14 +37,16 @@ export default function Settings() {
 
           <button
             onClick={() => navigate("/admin/dashboard")}
-            className="bg-blue-600 text-white px-5 py-3 rounded-xl flex items-center gap-2 hover:bg-blue-700"
+            className="bg-blue-600 text-white px-5 py-3 rounded-xl flex items-center gap-2 hover:bg-blue-700 w-fit"
           >
             <ArrowLeft size={18} />
             Dashboard
           </button>
+
         </div>
 
-        <div className="mt-8 bg-white rounded-2xl shadow-sm p-10">
+        <div className="mt-8 bg-white rounded-2xl shadow-sm p-8">
+
           <h2 className="text-2xl font-bold mb-4">
             Settings
           </h2>
@@ -39,8 +54,11 @@ export default function Settings() {
           <p className="text-gray-600">
             This section allows the administrator to configure the NovaTransit system.
           </p>
+
         </div>
+
       </main>
+
     </div>
   );
 }
