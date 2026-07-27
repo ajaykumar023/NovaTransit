@@ -153,20 +153,6 @@ export default function Hero() {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
 
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={() =>
-                  document
-                    .getElementById("dashboard-preview")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="rounded-xl px-8 py-6 text-base"
-              >
-                <Play className="mr-2 h-5 w-5" />
-
-                Watch Demo
-              </Button>
             </motion.div>
 
             {/* Trust Badges */}
