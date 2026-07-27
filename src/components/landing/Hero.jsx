@@ -78,13 +78,13 @@ export default function Hero() {
 
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950" />
 
-      <div className="absolute -left-40 -top-40 h-[500px] w-[500px] rounded-full bg-blue-500/20 blur-[120px]" />
+      <div className="absolute -left-40 -top-40 hidden md:block h-[500px] w-[500px] rounded-full bg-blue-500/20 blur-[120px]" />
 
-      <div className="absolute right-0 top-40 h-[450px] w-[450px] rounded-full bg-cyan-400/20 blur-[120px]" />
+      <div className="absolute right-0 top-40 hidden md:block h-[450px] w-[450px] rounded-full bg-cyan-400/20 blur-[120px]" />
 
-      <div className="absolute bottom-0 left-1/2 h-[350px] w-[350px] -translate-x-1/2 rounded-full bg-indigo-400/10 blur-[100px]" />
+      <div className="absolute bottom-0 left-1/2 hidden md:block h-[350px] w-[350px] -translate-x-1/2 rounded-full bg-indigo-400/10 blur-[100px]" />
 
-      <div className="relative mx-auto max-w-7xl px-6 py-24 lg:py-32">
+      <div className="relative mx-auto max-w-7xl px-5 py-14 md:px-6 md:py-20 lg:py-32">
 
         <motion.div
           variants={containerVariants}
@@ -112,7 +112,7 @@ export default function Hero() {
 
             <motion.h1
               variants={fadeUp}
-              className="mt-8 text-5xl font-black leading-tight md:text-6xl lg:text-7xl"
+              className="mt-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight"
             >
               Smart Bus Tracking
 
@@ -127,7 +127,7 @@ export default function Hero() {
 
             <motion.p
               variants={fadeUp}
-              className="mt-8 max-w-xl text-lg leading-8 text-slate-600 dark:text-slate-300"
+              className="mt-8 max-w-xl text-base md:text-lg leading-7 md:leading-8 text-slate-600 dark:text-slate-300"
             >
               Experience a smarter way to travel around campus with
               NovaTransit.
@@ -142,7 +142,7 @@ export default function Hero() {
 
             <motion.div
               variants={fadeUp}
-              className="mt-10 flex flex-wrap gap-5"
+              className="mt-10 flex flex-col sm:flex-row gap-4"
             >
               <Button
                 size="lg"
@@ -173,7 +173,7 @@ export default function Hero() {
 
             <motion.div
               variants={fadeUp}
-              className="mt-12 flex flex-wrap gap-8"
+              className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:flex gap-6"
             >
 
               <div className="flex items-center gap-3">
@@ -276,20 +276,28 @@ export default function Hero() {
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-              className="relative flex h-[470px] w-[470px] items-center justify-center rounded-full bg-gradient-to-br from-blue-500 via-cyan-500 to-indigo-600 shadow-[0_0_80px_rgba(59,130,246,0.35)]"
-            >
+              className="relative flex h-[300px] w-[300px]
+              sm:h-[380px] sm:w-[380px]
+              lg:h-[470px] lg:w-[470px]
+              items-center justify-center rounded-full bg-gradient-to-br from-blue-500 via-cyan-500 to-indigo-600 shadow-[0_0_80px_rgba(59,130,246,0.35)]"
+              >
               {/* Glow Ring */}
 
-              <div className="absolute h-[520px] w-[520px] rounded-full border border-blue-300/20" />
+              <div className="absolute hidden lg:block h-[520px] w-[520px] rounded-full border border-blue-300/20" />
 
-              <div className="absolute h-[560px] w-[560px] rounded-full border border-cyan-300/10" />
+              <div className="absolute hidden lg:block h-[560px] w-[560px] rounded-full border border-cyan-300/10" />
 
               {/* Center Circle */}
 
-              <div className="flex h-[260px] w-[260px] items-center justify-center rounded-full bg-white shadow-2xl dark:bg-slate-900">
+              <div className="flex h-[170px] w-[170px]
+                sm:h-[220px] sm:w-[220px]
+                lg:h-[260px] lg:w-[260px]
+                items-center justify-center rounded-full bg-white shadow-2xl dark:bg-slate-900">
 
-                <Bus className="h-32 w-32 text-blue-600" />
-
+                <Bus className="h-20 w-20
+                    sm:h-24 sm:w-24
+                    lg:h-32 lg:w-32
+                    text-blue-600" />
               </div>
 
             </motion.div>
@@ -304,7 +312,7 @@ export default function Hero() {
                 duration: 3,
                 repeat: Infinity,
               }}
-              className="absolute left-0 top-10 w-64 rounded-2xl border border-slate-200 bg-white/90 p-5 shadow-2xl backdrop-blur dark:border-slate-700 dark:bg-slate-900/90"
+              className="hidden lg:block absolute left-0 top-10 w-64 rounded-2xl border border-slate-200 bg-white/90 p-5 shadow-2xl backdrop-blur dark:border-slate-700 dark:bg-slate-900/90"
             >
               <div className="flex items-center gap-4">
 
@@ -345,7 +353,7 @@ export default function Hero() {
                 repeat: Infinity,
                 delay: 1,
               }}
-              className="absolute bottom-8 right-0 w-64 rounded-2xl border border-slate-200 bg-white/90 p-5 shadow-2xl backdrop-blur dark:border-slate-700 dark:bg-slate-900/90"
+              className="hidden lg:block absolute bottom-8 right-0 w-64 rounded-2xl border border-slate-200 bg-white/90 p-5 shadow-2xl backdrop-blur dark:border-slate-700 dark:bg-slate-900/90"
             >
               <div className="flex items-center gap-4">
 
@@ -385,7 +393,7 @@ export default function Hero() {
                 duration: 4,
                 repeat: Infinity,
               }}
-              className="absolute right-10 top-24 rounded-2xl border border-slate-200 bg-white/90 p-5 shadow-xl backdrop-blur dark:border-slate-700 dark:bg-slate-900/90"
+              className="hidden lg:block absolute right-10 top-24 rounded-2xl border border-slate-200 bg-white/90 p-5 shadow-xl backdrop-blur dark:border-slate-700 dark:bg-slate-900/90"
             >
               <p className="text-sm text-slate-500">
 
@@ -417,7 +425,7 @@ export default function Hero() {
                 duration: 2,
                 repeat: Infinity,
               }}
-              className="absolute bottom-32 left-6 rounded-2xl border border-slate-200 bg-white/90 px-5 py-4 shadow-xl backdrop-blur dark:border-slate-700 dark:bg-slate-900/90"
+              className="hidden lg:block absolute bottom-32 left-6 rounded-2xl border border-slate-200 bg-white/90 px-5 py-4 shadow-xl backdrop-blur dark:border-slate-700 dark:bg-slate-900/90"
             >
               <h3 className="text-sm text-slate-500">
 
@@ -443,7 +451,7 @@ export default function Hero() {
                 duration: 5,
                 repeat: Infinity,
               }}
-              className="absolute top-8 right-28 h-5 w-5 rounded-full bg-cyan-400 shadow-xl"
+              className="hidden lg:block absolute top-8 right-28 h-5 w-5 rounded-full bg-cyan-400 shadow-xl"
             />
 
             <motion.div
@@ -454,7 +462,7 @@ export default function Hero() {
                 duration: 4,
                 repeat: Infinity,
               }}
-              className="absolute bottom-10 left-20 h-4 w-4 rounded-full bg-blue-500 shadow-xl"
+              className="hidden lg:block absolute bottom-10 left-20 h-4 w-4 rounded-full bg-blue-500 shadow-xl"
             />
 
             <motion.div
@@ -465,7 +473,7 @@ export default function Hero() {
                 duration: 6,
                 repeat: Infinity,
               }}
-              className="absolute right-24 bottom-28 h-3 w-3 rounded-full bg-indigo-500 shadow-lg"
+              className="hidden lg:block absolute right-24 bottom-28 h-3 w-3 rounded-full bg-indigo-500 shadow-lg"
             />
 
           </motion.div>
@@ -523,12 +531,12 @@ export default function Hero() {
 
       {/* ================= DECORATIVE BOTTOM GLOW ================= */}
 
-      <div className="absolute bottom-0 left-1/2 h-56 w-[650px] -translate-x-1/2 rounded-full bg-blue-500/10 blur-[120px]" />
+      <div className="absolute bottom-0 left-1/2 hidden md:block h-56 w-[650px] -translate-x-1/2 rounded-full bg-blue-500/10 blur-[120px]" />
 
       {/* ================= GRID OVERLAY ================= */}
 
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.03]"
+        className="hidden md:block pointer-events-none absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage:
             "linear-gradient(to right,#64748b 1px,transparent 1px),linear-gradient(to bottom,#64748b 1px,transparent 1px)",
