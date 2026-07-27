@@ -21,28 +21,28 @@ const schedule = [
 
 export default function StudentSchedule() {
   return (
-    <div className="bg-white rounded-2xl shadow-sm p-6">
+    <div className="bg-white rounded-2xl shadow-sm p-4 sm:p-6">
 
-      <div className="flex items-center gap-3 mb-6">
-        <CalendarDays className="text-blue-600" />
+      <div className="flex items-center gap-3 mb-5 sm:mb-6">
+        <CalendarDays className="text-blue-600 w-5 h-5 sm:w-6 sm:h-6" />
 
-        <h2 className="text-xl font-bold">
+        <h2 className="text-lg sm:text-xl font-bold">
           Today's Schedule
         </h2>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-3 sm:space-y-4">
 
         {schedule.map((item) => (
           <div
             key={item.stop}
-            className="flex justify-between items-center border-b pb-3"
+            className="flex items-center justify-between border-b pb-3 gap-4"
           >
-            <span className="font-medium">
+            <span className="font-medium text-sm sm:text-base break-words">
               {item.stop}
             </span>
 
-            <span className="text-blue-600 font-semibold">
+            <span className="text-blue-600 font-semibold text-sm sm:text-base whitespace-nowrap">
               {item.time}
             </span>
           </div>

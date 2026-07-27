@@ -12,22 +12,25 @@ import StudentDriverCard from "@/components/student/StudentDriverCard";
 export default function Dashboard() {
   return (
     <div className="flex min-h-screen bg-slate-100">
+
       {/* Sidebar */}
       <StudentSidebar />
 
       {/* Main Content */}
-      <main className="flex-1 p-8 overflow-y-auto">
+      <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
+
         {/* Top Navigation */}
         <StudentTopbar />
 
-        {/* Hero Section */}
+        {/* Hero */}
         <StudentHero />
 
-        {/* Statistics Cards */}
+        {/* Statistics */}
         <StudentStats />
 
         {/* Map + Notifications */}
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 mt-8">
+
           <div className="xl:col-span-2">
             <StudentMap />
           </div>
@@ -35,28 +38,29 @@ export default function Dashboard() {
           <div>
             <StudentNotifications />
           </div>
+
         </div>
 
-        {/* Schedule */}
-        <div className="mt-8">
+        {/* Schedule + Quick Actions */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
+
           <StudentSchedule />
-        </div>
 
-        {/* Quick Actions */}
-        <div className="mt-8">
           <StudentQuickActions />
+
         </div>
 
-        {/* Journey Progress */}
-        <div className="mt-8">
+        {/* Journey + Driver */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
+
           <StudentJourney />
+
+          <StudentDriverCard />
+
         </div>
 
-        {/* Driver Details */}
-        <div className="mt-8">
-          <StudentDriverCard />
-        </div>
       </main>
+
     </div>
   );
 }

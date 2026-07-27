@@ -34,31 +34,38 @@ const cards = [
 
 export default function StudentStats() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mt-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 mt-8">
+
       {cards.map((card) => {
         const Icon = card.icon;
 
         return (
           <div
             key={card.title}
-            className="bg-white rounded-2xl shadow-sm p-6 flex items-center justify-between hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            className="bg-white rounded-2xl shadow-sm p-4 sm:p-6 flex items-center justify-between hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
           >
-            <div>
-              <p className="text-sm text-gray-500">
+            <div className="min-w-0">
+
+              <p className="text-xs sm:text-sm text-gray-500">
                 {card.title}
               </p>
 
-              <h2 className="mt-2 text-2xl font-bold text-gray-900">
+              <h2 className="mt-2 text-lg sm:text-2xl font-bold text-gray-900 break-words">
                 {card.value}
               </h2>
+
             </div>
 
-            <div className={`p-4 rounded-xl ${card.color}`}>
-              <Icon size={30} />
+            <div
+              className={`p-3 sm:p-4 rounded-xl flex-shrink-0 ${card.color}`}
+            >
+              <Icon className="w-6 h-6 sm:w-8 sm:h-8" />
             </div>
+
           </div>
         );
       })}
+
     </div>
   );
-}
+}s

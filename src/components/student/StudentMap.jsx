@@ -21,15 +21,15 @@ const busIcon = L.divIcon({
   iconSize: [36, 36],
 });
 
-const home = [12.9698, 77.7500];
+const home = [12.9698, 77.75];
 const college = [12.9775, 77.7585];
 
 const busRoute = [
-  [12.9725, 77.7540],
+  [12.9725, 77.754],
   [12.9732, 77.7548],
-  [12.9740, 77.7556],
-  [12.9750, 77.7566],
-  [12.9760, 77.7575],
+  [12.974, 77.7556],
+  [12.975, 77.7566],
+  [12.976, 77.7575],
 ];
 
 export default function StudentMap() {
@@ -47,28 +47,31 @@ export default function StudentMap() {
   }, []);
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm p-6">
-      <div className="flex justify-between mb-5">
+    <div className="bg-white rounded-2xl shadow-sm p-4 sm:p-6">
+
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-5">
+
         <div>
-          <h2 className="text-xl font-bold">
+          <h2 className="text-lg sm:text-xl font-bold">
             Live Bus Tracking
           </h2>
 
-          <p className="text-gray-500">
+          <p className="text-sm sm:text-base text-gray-500">
             Bus is approaching your pickup point
           </p>
         </div>
 
-        <span className="bg-green-100 text-green-700 px-4 py-2 rounded-full font-medium">
+        <span className="self-start sm:self-auto bg-green-100 text-green-700 px-4 py-2 rounded-full font-medium text-sm">
           ● LIVE
         </span>
+
       </div>
 
       <MapContainer
         center={bus}
         zoom={14}
         style={{
-          height: "420px",
+          height: window.innerWidth < 640 ? "300px" : "420px",
           width: "100%",
           borderRadius: "16px",
         }}
@@ -84,8 +87,10 @@ export default function StudentMap() {
 
         <Marker position={bus} icon={busIcon}>
           <Popup>
-            🚌 NovaTransit Bus <br />
-            Driver: Rahul Kumar <br />
+            🚌 NovaTransit Bus
+            <br />
+            Driver: Rahul Kumar
+            <br />
             ETA: 8 Minutes
           </Popup>
         </Marker>
@@ -104,27 +109,30 @@ export default function StudentMap() {
         />
       </MapContainer>
 
-      <div className="mt-4 flex justify-between items-center border-t pt-4">
+      <div className="mt-4 border-t pt-4 flex flex-col sm:flex-row sm:justify-between gap-4">
+
         <div>
           <p className="text-sm text-gray-500">
             Current Route
           </p>
 
-          <p className="font-semibold">
+          <p className="font-semibold text-sm sm:text-base">
             🏠 Home → 📍 MG Road → 🎓 BGS College
           </p>
         </div>
 
-        <div className="text-right">
+        <div className="sm:text-right">
           <p className="text-sm text-gray-500">
             Estimated Arrival
           </p>
 
-          <p className="font-bold text-green-600">
+          <p className="font-bold text-green-600 text-lg">
             8 Minutes
           </p>
         </div>
+
       </div>
+
     </div>
   );
 }

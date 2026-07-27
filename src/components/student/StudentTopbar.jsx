@@ -2,42 +2,64 @@ import { Search, Bell, UserCircle } from "lucide-react";
 
 export default function StudentTopbar() {
   return (
-    <div className="bg-white rounded-2xl shadow-sm p-5 flex justify-between items-center">
+    <div className="bg-white rounded-2xl shadow-sm p-4 sm:p-5">
 
-      <div className="relative w-96">
-        <Search
-          className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
-          size={18}
-        />
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
 
-        <input
-          placeholder="Search routes..."
-          className="w-full pl-11 pr-4 py-3 rounded-xl border focus:ring-2 focus:ring-blue-500 outline-none"
-        />
-      </div>
+        {/* Search */}
+        <div className="relative w-full sm:max-w-md">
 
-      <div className="flex items-center gap-6">
+          <Search
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+            size={18}
+          />
 
-        <button className="relative">
-          <Bell size={24} />
+          <input
+            placeholder="Search routes..."
+            className="w-full pl-11 pr-4 py-3 rounded-xl border focus:ring-2 focus:ring-blue-500 outline-none"
+          />
 
-          <span className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center">
-            2
-          </span>
-        </button>
+        </div>
 
-        <div className="flex items-center gap-3">
-          <UserCircle className="text-blue-600" size={42} />
+        {/* Right Section */}
+        <div className="flex items-center justify-between sm:justify-end gap-5">
 
-          <div>
-            <h3 className="font-bold">Student</h3>
-            <p className="text-gray-500 text-sm">
-              BGS College
-            </p>
+          {/* Notification */}
+          <button className="relative">
+
+            <Bell className="w-6 h-6" />
+
+            <span className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center">
+              2
+            </span>
+
+          </button>
+
+          {/* Profile */}
+          <div className="flex items-center gap-3">
+
+            <UserCircle
+              className="text-blue-600 w-10 h-10 sm:w-11 sm:h-11"
+            />
+
+            <div>
+
+              <h3 className="font-bold text-sm sm:text-base">
+                Student
+              </h3>
+
+              <p className="text-gray-500 text-xs sm:text-sm">
+                BGS College
+              </p>
+
+            </div>
+
           </div>
+
         </div>
 
       </div>
+
     </div>
   );
 }

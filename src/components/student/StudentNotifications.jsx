@@ -27,13 +27,13 @@ const notifications = [
 
 export default function StudentNotifications() {
   return (
-    <div className="bg-white rounded-2xl shadow-sm p-6">
+    <div className="bg-white rounded-2xl shadow-sm p-4 sm:p-6">
 
-      <h2 className="text-xl font-bold mb-6">
+      <h2 className="text-lg sm:text-xl font-bold mb-5 sm:mb-6">
         Notifications
       </h2>
 
-      <div className="space-y-5">
+      <div className="space-y-4 sm:space-y-5">
 
         {notifications.map((item, index) => {
           const Icon = item.icon;
@@ -41,24 +41,30 @@ export default function StudentNotifications() {
           return (
             <div
               key={index}
-              className="flex gap-4 items-center p-4 rounded-xl bg-slate-50 hover:bg-slate-100 transition"
+              className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl bg-slate-50 hover:bg-slate-100 transition"
             >
-              <div className="p-3 rounded-full bg-slate-200">
+
+              <div className="flex-shrink-0 p-2 sm:p-3 rounded-full bg-slate-200">
+
                 <Icon
-                  size={20}
                   className={item.color}
+                  size={18}
                 />
+
               </div>
 
-              <div>
-                <h3 className="font-semibold">
+              <div className="min-w-0">
+
+                <h3 className="font-semibold text-sm sm:text-base break-words">
                   {item.title}
                 </h3>
 
-                <p className="text-sm text-gray-500">
+                <p className="text-xs sm:text-sm text-gray-500">
                   {item.time}
                 </p>
+
               </div>
+
             </div>
           );
         })}
