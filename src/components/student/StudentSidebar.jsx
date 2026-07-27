@@ -5,6 +5,7 @@ import {
   Bell,
   User,
   LogOut,
+  X,
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
@@ -16,60 +17,88 @@ const menu = [
   ["Profile", User, "/student/profile"],
 ];
 
-export default function StudentSidebar() {
+export default function StudentSidebar({
+  sidebarOpen,
+  setSidebarOpen,
+}) {
   return (
-    <aside className="w-20 lg:w-72 min-h-screen bg-slate-900 text-white flex flex-col transition-all duration-300">
+    <>
+      {/* Mobile Overlay */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
 
-      {/* Logo */}
-      <div className="p-4 lg:p-6 border-b border-slate-700 flex flex-col items-center lg:items-start">
+      {/* Sidebar */}
+      <aside
+        className={`
+          fixed lg:static top-0 left-0 z-[1000]
+          h-screen w-72
+          bg-slate-900 text-white
+          flex flex-col
+          transform transition-transform duration-300
+          ${
+            sidebarOpen
+              ? "translate-x-0"
+              : "-translate-x-full lg:translate-x-0"
+          }
+        `}
+      >
+        {/* Header */}
+        <div className="p-6 border-b border-slate-700 flex items-center justify-between">
 
-        <h1 className="text-xl lg:text-2xl font-bold">
-          🚌 <span className="hidden lg:inline">NovaTransit</span>
-        </h1>
+          <div>
+            <h1 className="text-2xl font-bold">
+              🚌 NovaTransit
+            </h1>
 
-        <p className="hidden lg:block text-slate-400 text-sm">
-          Student Panel
-        </p>
+            <p className="text-slate-400 text-sm">
+              Student Panel
+            </p>
+          </div>
 
-      </div>
-
-      {/* Menu */}
-      <nav className="flex-1 p-2 lg:p-4">
-
-        {menu.map(([title, Icon, path]) => (
-          <NavLink
-            key={title}
-            to={path}
-            className={({ isActive }) =>
-              `flex items-center justify-center lg:justify-start gap-3 px-3 lg:px-4 py-3 rounded-xl mb-2 transition ${
-                isActive
-                  ? "bg-blue-600 shadow-lg shadow-blue-500/20"
-                  : "hover:bg-slate-800"
-              }`
-            }
+          {/* Close Button (Mobile Only) */}
+          <button
+            className="lg:hidden"
+            onClick={() => setSidebarOpen(false)}
           >
-            <Icon size={20} />
+            <X size={24} />
+          </button>
 
-            <span className="hidden lg:inline">
-              {title}
-            </span>
+        </div>
 
-          </NavLink>
-        ))}
+        {/* Menu */}
+        <nav className="flex-1 p-4">
 
-      </nav>
+          {menu.map(([title, Icon, path]) => (
+            <NavLink
+              key={title}
+              to={path}
+              onClick={() => setSidebarOpen(false)}
+              className={({ isActive }) =>
+                `flex items-center gap-3 px-4 py-3 rounded-xl mb-2 transition ${
+                  isActive
+                    ? "bg-blue-600 shadow-lg shadow-blue-500/20"
+                    : "hover:bg-slate-800"
+                }`
+              }
+            >
+              <Icon size={20} />
+              <span>{title}</span>
+            </NavLink>
+          ))}
 
-      {/* Logout */}
-      <button className="m-2 lg:m-4 flex items-center justify-center lg:justify-start gap-3 px-3 lg:px-4 py-3 rounded-xl hover:bg-red-600 transition">
+        </nav>
 
-        <LogOut size={20} />
+        {/* Logout */}
+        <button className="m-4 flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-red-600 transition">
+          <LogOut size={20} />
+          <span>Logout</span>
+        </button>
 
-        <span className="hidden lg:inline">
-          Logout
-        </span>
-
-      </button>
-
-    </aside>
+      </aside>
+    </>
   );
 }

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Bell,
   Clock3,
@@ -40,16 +41,26 @@ const notifications = [
 export default function Notifications() {
   const navigate = useNavigate();
 
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <div className="flex min-h-screen bg-slate-100">
-      <StudentSidebar />
 
-      <main className="flex-1 p-8 overflow-y-auto">
-        <StudentTopbar />
+      <StudentSidebar
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+      />
 
-        <div className="flex justify-between items-center mt-8">
+      <main className="flex-1 lg:ml-72 p-4 sm:p-6 lg:p-8 overflow-y-auto">
+
+        <StudentTopbar
+          setSidebarOpen={setSidebarOpen}
+        />
+
+        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6 mt-8">
+
           <div>
-            <h1 className="text-4xl font-bold">
+            <h1 className="text-3xl sm:text-4xl font-bold">
               Notifications
             </h1>
 
@@ -60,14 +71,16 @@ export default function Notifications() {
 
           <button
             onClick={() => navigate("/student/dashboard")}
-            className="flex items-center gap-2 bg-blue-600 text-white px-5 py-3 rounded-xl hover:bg-blue-700 transition"
+            className="flex items-center gap-2 bg-blue-600 text-white px-5 py-3 rounded-xl hover:bg-blue-700 transition w-fit"
           >
             <ArrowLeft size={18} />
             Dashboard
           </button>
+
         </div>
 
         <div className="mt-8 space-y-5">
+
           {notifications.map((item) => {
             const Icon = item.icon;
 
@@ -76,7 +89,9 @@ export default function Notifications() {
                 key={item.title}
                 className="bg-white rounded-2xl shadow-sm p-6 flex items-center justify-between hover:shadow-lg transition"
               >
+
                 <div className="flex items-center gap-5">
+
                   <div className={`p-4 rounded-full ${item.color}`}>
                     <Icon size={24} />
                   </div>
@@ -90,16 +105,21 @@ export default function Notifications() {
                       {item.time}
                     </p>
                   </div>
+
                 </div>
 
                 <span className="text-sm text-green-600 font-semibold">
                   New
                 </span>
+
               </div>
             );
           })}
+
         </div>
+
       </main>
+
     </div>
   );
 }

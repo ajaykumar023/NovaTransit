@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Mail,
   Phone,
@@ -15,19 +16,29 @@ import StudentTopbar from "@/components/student/StudentTopbar";
 export default function Profile() {
   const navigate = useNavigate();
 
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <div className="flex min-h-screen bg-slate-100">
+
       {/* Sidebar */}
-      <StudentSidebar />
+      <StudentSidebar
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+      />
 
       {/* Main Content */}
-      <main className="flex-1 p-8 overflow-y-auto">
-        <StudentTopbar />
+      <main className="flex-1 lg:ml-72 p-4 sm:p-6 lg:p-8 overflow-y-auto">
+
+        <StudentTopbar
+          setSidebarOpen={setSidebarOpen}
+        />
 
         {/* Header */}
-        <div className="flex justify-between items-center mt-8">
+        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6 mt-8">
+
           <div>
-            <h1 className="text-4xl font-bold">
+            <h1 className="text-3xl sm:text-4xl font-bold">
               Student Profile
             </h1>
 
@@ -38,23 +49,24 @@ export default function Profile() {
 
           <button
             onClick={() => navigate("/student/dashboard")}
-            className="flex items-center gap-2 bg-blue-600 text-white px-5 py-3 rounded-xl hover:bg-blue-700 transition"
+            className="flex items-center gap-2 bg-blue-600 text-white px-5 py-3 rounded-xl hover:bg-blue-700 transition w-fit"
           >
             <ArrowLeft size={18} />
             Dashboard
           </button>
+
         </div>
 
         {/* Profile Card */}
-        <div className="bg-white rounded-2xl shadow-sm p-8 mt-8">
+        <div className="bg-white rounded-2xl shadow-sm p-6 sm:p-8 mt-8">
 
-          <div className="flex items-center gap-6">
+          <div className="flex flex-col sm:flex-row items-center gap-6">
 
             <div className="w-28 h-28 rounded-full bg-blue-100 border-4 border-blue-200 flex items-center justify-center">
               <UserCircle className="w-20 h-20 text-blue-600" />
             </div>
 
-            <div>
+            <div className="text-center sm:text-left">
               <h1 className="text-3xl font-bold">
                 Krithika
               </h1>
@@ -66,7 +78,7 @@ export default function Profile() {
 
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mt-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
 
             <div className="space-y-6">
 
@@ -106,6 +118,7 @@ export default function Profile() {
         </div>
 
       </main>
+
     </div>
   );
 }

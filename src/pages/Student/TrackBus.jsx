@@ -3,18 +3,24 @@ import { useNavigate } from "react-router-dom";
 import StudentSidebar from "@/components/student/StudentSidebar";
 import StudentTopbar from "@/components/student/StudentTopbar";
 import StudentMap from "@/components/student/StudentMap";
+import { useState } from "react";
 
 export default function TrackBus() {
-  const navigate = useNavigate();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div className="flex min-h-screen bg-slate-100">
       {/* Sidebar */}
-      <StudentSidebar />
+      <StudentSidebar
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+      />
 
       {/* Main */}
       <main className="flex-1 p-8 overflow-y-auto">
-        <StudentTopbar />
+        <StudentTopbar
+          setSidebarOpen={setSidebarOpen}
+        />
 
         {/* Header */}
         <div className="mt-8 flex items-center justify-between">

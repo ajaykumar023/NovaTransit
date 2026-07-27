@@ -67,6 +67,7 @@ export default function StudentMap() {
 
       </div>
 
+      <div className="relative z-0">
       <MapContainer
         center={bus}
         zoom={14}
@@ -108,6 +109,7 @@ export default function StudentMap() {
           }}
         />
       </MapContainer>
+      </div>
 
       <div className="mt-4 border-t pt-4 flex flex-col sm:flex-row sm:justify-between gap-4">
 

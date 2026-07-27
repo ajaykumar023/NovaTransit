@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import StudentSidebar from "@/components/student/StudentSidebar";
 import StudentTopbar from "@/components/student/StudentTopbar";
 import StudentHero from "@/components/student/StudentHero";
@@ -10,17 +12,24 @@ import StudentJourney from "@/components/student/StudentJourney";
 import StudentDriverCard from "@/components/student/StudentDriverCard";
 
 export default function Dashboard() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <div className="flex min-h-screen bg-slate-100">
 
       {/* Sidebar */}
-      <StudentSidebar />
+      <StudentSidebar
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+      />
 
       {/* Main Content */}
-      <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
+      <main className="flex-1 lg:ml-72 overflow-y-auto p-4 sm:p-6 lg:p-8">
 
         {/* Top Navigation */}
-        <StudentTopbar />
+        <StudentTopbar
+          setSidebarOpen={setSidebarOpen}
+        />
 
         {/* Hero */}
         <StudentHero />
